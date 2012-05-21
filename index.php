@@ -1,8 +1,8 @@
 <?php
 //First we need to create a connection to our MySQL database and also set up some details into variables for the database connection.
-$db_user = "root";
-$db_pass = "root";
-$db_db = "Tropo";
+$db_user = "User_Name";
+$db_pass = "Password";
+$db_db = "Database_Name";
 //We use the details we've stored into our variables to connect to the database.
 mysql_connect("localhost", $db_user, $db_pass) or die("ERROR: MySQL cannot connect.");
 

@@ -10,9 +10,9 @@ $uri = $_GET['uri'];
 
 //In this example I have decided to create a function to deal with the MySQL connection as it is going to be needed/called at multple points in the script
 function connectToMySQL(){
-  $db_user = "root";
-  $db_pass = "root";
-  $db_db = "Tropo";
+  $db_user = "User_Name";
+  $db_pass = "Password";
+  $db_db = "Database_Name";
   mysql_connect("localhost", $db_user, $db_pass) or die("ERROR: MySQL cannot connect.");
   mysql_select_db($db_db) or die("ERROR: MySQL cannot select database.");	
 }

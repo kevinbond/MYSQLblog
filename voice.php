@@ -63,7 +63,7 @@ switch ($uri)
   $tropo->record(array(
     'name' => 'recording',
     'say' => 'Please leave your message after the beep. Press the hash key when you are finished recording your message.',
-    'url' => 'http://web1.tunnlr.com:11874/php/MYSQLblog/recording.php?name='.$call_id,
+    'url' => 'http://yourWebsite/recordings/recording.php?name='.$call_id,
   'terminator' => '#',
   'bargein' => 'false',
     'beep' => 'true',
@@ -110,7 +110,7 @@ switch ($uri)
 
   //Insert the new recording into the MySQL database table called 'recordings', make sure you change the URL so that it corosponds to your 
   //own server/hosting or this wont work.
-  mysql_query("INSERT INTO `recordings` (callId, recording_url) VALUES ('".$call_id."', 'http://web1.tunnlr.com:11874/php/MYSQLblog/".$call_id.".wav')");	
+  mysql_query("INSERT INTO `recordings` (callId, recording_url) VALUES ('".$call_id."', 'http://yourWebsite/recordings/".$call_id.".wav')");	
 
 
   //Create a new Tropo object.
@@ -118,7 +118,7 @@ switch ($uri)
 
   //Replay the recording back to the caller and speak out "Good bye" after the recording has finished. Make sure you change the URL to work properly with
   //your own server/hosting.
-  $tropo->say("http://web1.tunnlr.com:11874/php/MYSQLblog/".$call_id.".wav .wav Good bye.");
+  $tropo->say("http://yourWebsite/recordings/".$call_id.".wav Good bye.");
 
   //Hang up the call.
   $tropo->hangup();

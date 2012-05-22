@@ -56,16 +56,14 @@ switch ($uri)
 
 
   //The below record function speaks out to the user asking them to record their message and then asks them to press the hash key 
-  //to continue and save their message. Note that the URL will have to be changed so that it corrosponds with your own server/hosting.
-  //You will also need to set the username and password options to the FTP details of your server/hosting before this script will work.
-
-  //You can look up the record webapi function on the Tropo documentation website for a better explanation of the below options.
+  //to continue and save their message. The record is sending the recording to another php file which extracts the recording and the
+  //name variable and saves the recording in that same folder as this app on your server
   $tropo->record(array(
     'name' => 'recording',
     'say' => 'Please leave your message after the beep. Press the hash key when you are finished recording your message.',
-    'url' => 'http://yourWebsite/recordings/recording.php?name='.$call_id,
-  'terminator' => '#',
-  'bargein' => 'false',
+    'url' => "http://www.yourServer.com/recording.php?name=".$call_id,
+    'terminator' => '#',
+    'bargein' => 'false',
     'beep' => 'true',
     'timeout' => 10,
     'maxSilence' => 7,
@@ -110,7 +108,7 @@ switch ($uri)
 
   //Insert the new recording into the MySQL database table called 'recordings', make sure you change the URL so that it corosponds to your 
   //own server/hosting or this wont work.
-  mysql_query("INSERT INTO `recordings` (callId, recording_url) VALUES ('".$call_id."', 'http://yourWebsite/recordings/".$call_id.".wav')");	
+  mysql_query("INSERT INTO `recordings` (callId, recording_url) VALUES ('".$call_id."', 'http://www.yourServer.com/".$call_id.".wav')");	
 
 
   //Create a new Tropo object.
@@ -118,7 +116,7 @@ switch ($uri)
 
   //Replay the recording back to the caller and speak out "Good bye" after the recording has finished. Make sure you change the URL to work properly with
   //your own server/hosting.
-  $tropo->say("http://yourWebsite/recordings/".$call_id.".wav Good bye.");
+  $tropo->say("http://yourServer.com/".$call_id.".wav Good bye.");
 
   //Hang up the call.
   $tropo->hangup();

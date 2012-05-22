@@ -2,7 +2,7 @@
 
 // KLogger is a logging class from 
 // http://codefury.net/projects/klogger/
-require_once 'KLogger/src/KLogger.php';
+require_once 'KLogger.php';
 
 $log = new KLogger ( "log.txt", KLogger::DEBUG);
 $log->LogInfo($_GET['name']);
